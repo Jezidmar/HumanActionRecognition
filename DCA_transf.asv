@@ -1,0 +1,92 @@
+original_list = num(indices);
+repeated_list = [];
+
+
+test_indexes = [7,8];
+train_indexes = [];
+zadnjia=7;
+zadnjib=8;
+% loop through the sample
+for i = 1:204
+        test_indexes = [test_indexes, zadnjia+8];
+        test_indexes = [test_indexes, zadnjib+8];
+end
+
+train_indexes = 1:1632
+
+
+
+
+for i = 1:length(original_list)
+    repeated_list = [repeated_list, ones(1,8)*original_list(i)];
+end
+
+
+%idemo custom podjelu napravit.
+%example
+normalized_matrixS = bsxfun(@minus, D , mean(D,2));
+normalized_matrixS = bsxfun(@rdivide, normalized_matrixS, std(normalized_matrixS,[],2));
+
+normalized_matrixT = bsxfun(@minus, T, mean(T,2));
+normalized_matrixT = bsxfun(@rdivide, normalized_matrixT, std(normalized_matrixT,[],2));
+
+
+%
+
+%za testiranje overfitanih
+%trainDataS = normalized_matrixS;
+%testDataS = normalized_matrixS(test_indexes,:);
+
+%trainDataT = normalized_matrixT;
+%testDataT = normalized_matrixT(test_indexes,:);
+
+
+
+trainDataS = normalized_matrixS(train_indexes,:);
+testDataS = normalized_matrixS(test_indexes,:);
+
+trainDataT = normalized_matrixT(train_indexes,:);
+testDataT = normalized_matrixT(test_indexes,:);
+
+
+%
+%
+%
+
+% Calculate the sum of each column
+%column_sumsD = sum(D, 1);
+%column_sumsT = sum(T, 1);
+
+% Divide each column by its sum
+%matrix_normalizedD = bsxfun(@rdivide, D, column_sumsD);
+%matrix_normalizedT = bsxfun(@rdivide, T, column_sumsT);
+
+%trainDataS = matrix_normalizedD(train_indexes,:);
+%testDataS = matrix_normalizedD(test_indexes,:);
+
+%trainDataT = matrix_normalizedT(train_indexes,:);
+%testDataT = matrix_normalizedT(test_indexes,:);
+
+
+trainTar=repeated_list(train_indexes);
+testTar=repeated_list(test_indexes);
+
+
+[Ax,Ay,Spatial,Temporal]=dcaFuse(trainDataS',trainDataT',repeated_list(train_indexes) );
+
+
+
+ %[Ax, Ay, trainXdca, trainYdca] = dcaFuse(trainX, trainY, label);
+
+%   % Project the test data into the DCA subspace
+ testSpat = Ax * testDataS';
+ testTemp = Ay * testDataT';
+% 
+%   % Fuse the two transformed feature matrices with either concatenation or summation:
+%   % Fusion by concatenation (Z1)
+trainZ1 = [Spatial ; Temporal];
+testZ1  = [testSpat ; testTemp];
+% 
+%Fusion by summation (Z2)
+ trainZ2 = [Spatial + Temporal];
+ testZ2  = [testSpat + testTemp];
