@@ -1,6 +1,6 @@
-# HumanPoseEstimation
+# HumanActionRecognition
 
-Here, we bring non official implementation of algorithm based on paper # inventions-04-00009-v2.pdf. Coding is done in MATLAB and the comments are mostly on Croatian language.
+Here, I bring non official implementation of algorithm based on paper # inventions-04-00009-v2.pdf. Coding is done in MATLAB and the comments are mostly on Croatian language.
 #TODO Translation
 
 Summary:
