@@ -17,6 +17,8 @@ Dimensions of the Binary 3D boxes are subject to optimization. I experimented wi
 I used first 6 instances of action for training and 2 instances for testing purpose. There is no validation set used. Only 194 video clips are being used out of 500+ available. With MultiThreading one should be able to overcome the computational challenges.
 
 
+During preprocessing phase, use parametrization.m file in Preprocessing folder.
+
 
 
 
