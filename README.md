@@ -3,21 +3,37 @@
 This repo aims to replicate following methodology:
 ![Methodology](methodology.png)
 
-Here, I bring non official implementation of algorithm based on paper [Skeleton based HAR](inventions-04-00009-v2.pdf)
-. Coding is done in MATLAB and the comments are mostly on Croatian language. Along the code implementation, I added [HAR](HAR.pdf) file where I described the mathISH background of used methods, although it is as well on Croatian language.
+## Unofficial MATLAB Implementation for Skeleton-based Human Activity Recognition (HAR)
 
-The files structure is separated in 2 folders. In Preprocessing folder one can find all algorithms relevant for implementing above mentioned methodology. In Evaluation folder the classification head can be found. I expanded the proposed approaches from paper to SVM & RF. For the reproduction of results, I can send the workspace from session.
+This repository provides an unofficial implementation of a skeleton-based HAR algorithm inspired by the paper "[Skeleton based HAR](inventions-04-00009-v2.pdf)" (Croatian).
 
-I added the pipeline which is suitable for [MSRC-12 Dataset](MSRC_12_gesture_dataset.pdf). Other datasets used in paper are not publicly available.
+**Key Features:**
 
-Because of the compute constraints, I used only first 800 frames from each video file. 
+* **MATLAB Implementation:** The code is implemented in MATLAB with comments primarily in Croatian.
+* **Mathematical Background:** A separate document, "[HAR](HAR.pdf)" (Croatian), delves into the mathematical background of the methods used.
+* **Modular Structure:** The code is well-structured with two folders:
+    * `Preprocessing`: Contains algorithms for data preparation.
+    * `Evaluation`: Houses the classification head, including expanded approaches (SVM & RF) not present in the paper.
+* **Dataset Compatibility:** The pipeline supports the [MSRC-12 Dataset](MSRC_12_gesture_dataset.pdf). Note that datasets used in the original paper are not publicly available.
 
-Dimensions of the Binary 3D boxes are subject to optimization. I experimented with 25^^3 20^^3 and 15^^3. All yielded similar results.
+**Implementation Notes:**
 
-I used first 6 instances of action for training and 2 instances for testing purpose. There is no validation set used. Only 194 video clips are being used out of 500+ available. With MultiThreading one should be able to overcome the computational challenges.
+* **Frame Processing:** Due to computational constraints, only the first 800 frames from each video are processed.
+* **Binary 3D Box Dimensions:** The optimal dimensions for the binary 3D boxes are not explicitly defined in the paper. Experimentation with various sizes (25^3, 20^3, 15^3) yielded similar results.
+* **Training/Testing Split:** The first 6 instances of each action are used for training, with the remaining 2 instances used for testing. No validation set is employed. This approach leverages only 194 video clips out of 500+.
+* **Multithreading Potential:** The code likely benefits from multithreading to enhance computational efficiency.
+* **Preprocessing:** Refer to the `parametrization.m` file within the `Preprocessing` folder for details on parameterization during the preprocessing stage.
 
+**Availability:**
 
-During preprocessing phase, use parametrization.m file in Preprocessing folder.
+The implementation and associated files are currently not publicly available. If you'd like to collaborate or explore reproduction of results, feel free to contact the repository owner.
+
+**Additional Considerations:**
+
+* Consider adding a license file to clarify the terms of use for your code.
+* If possible, explore providing a minimal reproducible example for users to test the functionality.
+* If you plan to make the code publicly available in the future, provide clear installation and usage instructions.
+
 
 
 
