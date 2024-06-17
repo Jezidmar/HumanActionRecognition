@@ -1,9 +1,7 @@
 # HumanPoseEstimation
 
-Here, we bring non official implementation of algorithm based on mentioned paper. Coding is done in MATLAB and is mostly on Croatian language.
+Here, we bring non official implementation of algorithm based on paper inventions-04-00009-v2.pdf. Coding is done in MATLAB and the comments are mostly on Croatian language.
 #TODO Translation
 
-Data time warping will be added soon as pre processing method!
-
 Summary:
-        Here, we describe Multimodal approach for Human action recognition using tensor decomposition and ANN.
+        Here, we describe Multimodal approach for Human action recognition using tensor decomposition and ANN. Furthermore, the comparison with Random Forests approach is included as well
