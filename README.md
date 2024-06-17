@@ -7,3 +7,4 @@ Here, I bring non official implementation of algorithm based on paper [Skeleton 
 
 The files structure is separated in 2 folders. In Preprocessing folder one can find all algorithms relevant for implementing above mentioned methodology. In Evaluation folder the classification head can be found. I expanded the proposed approaches from paper to SVM & RF. For the reproduction of results, I can send the workspace from session.
 
+I added the pipeline which is suitable for 
