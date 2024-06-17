@@ -2,7 +2,7 @@ function [sigma_A,sigma_D]=kompresija1(K,D)
 
 for i=1:800
 
-
+    %For computational purposes, the loading is hardcoded only for first 800 frames
 
     %prvo unfold. Oznake umjesto Y1,Y2,Y3 imamo K1, K2, K3.
 
