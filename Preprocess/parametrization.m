@@ -8,7 +8,7 @@ codebooKS=C_S'; %codebooS€R^{30x10x8x194}  194 video klipa
 codebooKT=C_T';
 
 
-
+%Use (25,25,25) Binary boxes
 dim1 = 25;
 dim2 =25;
 dim3 = 25;
