@@ -5,5 +5,5 @@ This repo aims to replicate following methodology:
 Here, I bring non official implementation of algorithm based on paper [Skeleton based HAR](inventions-04-00009-v2.pdf)
 . Coding is done in MATLAB and the comments are mostly on Croatian language. Along the code implementation, I added [HAR](HAR.pdf) file where I described the mathISH background of used methods, although it is as well on Croatian language.
 
-Summary:
-        Here, we describe Multimodal approach for Human action recognition using tensor decomposition and ANN. Furthermore, the comparison with Random Forests approach is included as well
+The files structure is separated in 2 folders. In Preprocessing folder one can find all algorithms relevant for implementing above mentioned methodology. In Evaluation folder the classification head can be found. I expanded the proposed approaches from paper to SVM & RF. For the reproduction of results, I can send the workspace from session.
+
