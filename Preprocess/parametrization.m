@@ -148,6 +148,6 @@ fprintf('Elapsed time: %f seconds\n', toc);
 %[~,~,Spatial,Temporal]=dcaFuse(squeeze(D),squeeze(T), );
 
 
-#save('Feature_version');
+%save('Feature_version');
 %
 %Ukljucimo samo prvih 200 video klipova.
