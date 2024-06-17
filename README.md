@@ -24,15 +24,6 @@ This repository provides an unofficial implementation of a skeleton-based HAR al
 * **Multithreading Potential:** The code likely benefits from multithreading to enhance computational efficiency.
 * **Preprocessing:** Refer to the `parametrization.m` file within the `Preprocessing` folder for details on parameterization during the preprocessing stage.
 
-**Availability:**
-
-The implementation and associated files are currently not publicly available. If you'd like to collaborate or explore reproduction of results, feel free to contact the repository owner.
-
-**Additional Considerations:**
-
-* Consider adding a license file to clarify the terms of use for your code.
-* If possible, explore providing a minimal reproducible example for users to test the functionality.
-* If you plan to make the code publicly available in the future, provide clear installation and usage instructions.
 
 
 
