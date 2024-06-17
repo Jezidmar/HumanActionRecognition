@@ -2,7 +2,7 @@
 
 This repo aims to replicate following methodology:
 ![Methodology](methodology.png)
-Here, I bring non official implementation of algorithm based on paper [Link to inventions-04-00009-v2.pdf](inventions-04-00009-v2.pdf)
+Here, I bring non official implementation of algorithm based on paper [Skeleton based HAR](inventions-04-00009-v2.pdf)
 . Coding is done in MATLAB and the comments are mostly on Croatian language.
 #TODO Translation
 
