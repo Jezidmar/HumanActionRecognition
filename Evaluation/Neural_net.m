@@ -1,4 +1,4 @@
-net = feedforwardnet([10 8 6  ]);
+net = feedforwardnet([10 8 6]);
 
 % Configure the network for training
 net = configure(net,trainZ2 , squeeze(trainTar) );
