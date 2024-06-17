@@ -11,3 +11,5 @@ The files structure is separated in 2 folders. In Preprocessing folder one can f
 I added the pipeline which is suitable for [MSRC-12 Dataset](MSRC_12_gesture_dataset.pdf). Other datasets used in paper are not publicly available.
 
 Because of the compute constraints, I used only first 800 frames from each video file. 
+
+Dimensions of the Binary 3D boxes are subject to optimization. I experimented with 25^^3 20^^3 and 15^^3. All yielded similar results.
