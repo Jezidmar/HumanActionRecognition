@@ -14,7 +14,7 @@ Because of the compute constraints, I used only first 800 frames from each video
 
 Dimensions of the Binary 3D boxes are subject to optimization. I experimented with 25^^3 20^^3 and 15^^3. All yielded similar results.
 
-I used first 6 instances of action for training and 2 instances for testing purpose. There is no validation set used. Only 194 are being used out of 500+ available. With MultiThreading one should be able to overcome the computational challenges.
+I used first 6 instances of action for training and 2 instances for testing purpose. There is no validation set used. Only 194 video clips are being used out of 500+ available. With MultiThreading one should be able to overcome the computational challenges.
 
 
 
