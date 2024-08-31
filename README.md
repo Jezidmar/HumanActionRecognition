@@ -18,7 +18,8 @@ This repository provides an unofficial implementation of a skeleton-based HAR al
 Following are obtained results and the comparison to the results obtained by authors:
 
 ## Results
-Based on the "leave persons out procedure", I obtained following results:![Spatial descriptor](spatial_descriptor.png)
+Based on the "leave persons out procedure", I obtained the following results:
+![Spatial descriptor](spatial_descriptor.png)
 
 ![Temporal descriptor](temporal_descriptor.png)
 
@@ -26,5 +27,27 @@ Based on the "leave persons out procedure", I obtained following results:![Spati
 
 
 
+These results were obtained using following hyperparameters:
+   - (x,y,h) = (13,13,15)
+   - number_of_singular_values=13
+   - Codebook construction
+    - K=32 codes in codebook
+    - L1 distance used for construction of codebooks `cityblock`
+    - There is generally high variance, i.e. local optimas are of relatively similar quality
+   - Preprocessing of skeleton
+    - Aligning the coordinate system based on hip center
+    - Scaling based on spine length
+    - Rotation in direction of z axis, i.e. vector [0 0 1]
+    - Finally, scaling coordinates so to fit in binary tensor of third order
+   - 1000 Trees in Random Forests classifier
+
+
+Unfortunately, authors did not provide the methodology on construction of both Codebook, descriptors, thus there are many details left in air. I assumed the separate frames represent centers in codebook but in some literature they point out that the multiple frames concatenated can be used as well. I implemented pipeline for extraction of features based on windows, the scripts are named '{regular_name}_window' and the additional hyperparameters are hop_length and window_size which have standard meaning. 
+
+There is possibility that authors used only a fragment of original set, i.e. ~1600 samples since they reffered to the paper where only Video instructed sequences were used. 
+
+Feel free to suggest the improvements via issues section.
+
+Thank you for reading. Cheers!
 
 
