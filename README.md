@@ -18,8 +18,9 @@ This repository provides an unofficial implementation of a skeleton-based HAR al
 Following are obtained results and the comparison to the results obtained by authors:
 
 ## Results
+Based on the "leave persons out procedure", I obtained following results:![Spatial descriptor](spatial_descriptor.png)
 
-
+![Temporal descriptor](temporal_descriptor.png)
 
 
 
