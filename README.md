@@ -55,6 +55,8 @@ There is a possibility that the authors used only a fragment of the original set
 
 Feel free to suggest improvements via the issues section.
 
+For better understanding of preprocessing, I suggest reading the paper: https://www.researchgate.net/publication/323333619_Improving_bag-of-poses_with_semi-temporal_pose_descriptors_for_skeleton-based_action_recognition
+
 Thank you for reading. Cheers!
 
 
