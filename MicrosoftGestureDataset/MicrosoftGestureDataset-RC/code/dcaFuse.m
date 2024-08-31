@@ -182,7 +182,6 @@ clear PhibY artSby SbyEigVecs SbyEigVals
 %  identity and the classes are separated
 
 r = min(cx,cy);	% Maximum length of the desired feature vector
-
 Wbx = Wbx(:,1:r);
 Wby = Wby(:,1:r);
 

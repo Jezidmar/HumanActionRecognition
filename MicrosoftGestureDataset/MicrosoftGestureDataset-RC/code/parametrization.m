@@ -1,8 +1,8 @@
 
 
 K=500;
-
-[idx1,idx2,D_S,D_T,C_S,C_T]=coding(columnVectorA,columnVectorB,K);
+number_of_sv=10;
+[idx1,idx2,C_S,C_T]=coding(columnVectorA,columnVectorB,K);
 codebooKS=C_S'; %codebooS€R^{30x10x8x194}  194 video klipa
 
 codebooKT=C_T';
@@ -50,7 +50,7 @@ for k=1:204
      originalSample=start_frame:end_frame;
 
     for i=start_frame:end_frame
-            skel=reshape(X(i,:), 4, NUI_SKELETON_POSITION_COUNT);
+            
             Y=skel(1:3,:);
 
         
@@ -63,15 +63,15 @@ for k=1:204
             %sada ih kompresiraj
             [K1,K2,K3]=unfold(K_A);
 
-            U1_A=rsvd(K1,10); %dummy entry, nu 2
-            U2_A=rsvd(K2,10);
-            U3_A=rsvd(K3,10);
+            U1_A=rsvd(K1,number_of_sv); %dummy entry, nu 2
+            U2_A=rsvd(K2,number_of_sv);
+            U3_A=rsvd(K3,number_of_sv);
     
             %unfold za kockaB
 
             [D1,D2,D3]=unfold(K_B);
 
-            U1_B=rsvd(D1,10);
+            U1_B=rsvd(D1,number_of_sv);
             U2_B=rsvd(D2,10);
             U3_B=rsvd(D3,10);
     
@@ -97,11 +97,11 @@ for k=1:204
     
         %uzmi jos prvih 10 elemenata
 
-            a1=a1(1:13);
-            a2=a2(1:13);
+            a1=a1(1:10);
+            a2=a2(1:10);
 
-            b1=b1(1:13);
-            b2=b2(1:13);
+            b1=b1(1:10);
+            b2=b2(1:10);
 
             c1=c1(1:13);
             c2=c2(1:13);
@@ -110,22 +110,22 @@ for k=1:204
 
             %odredi klaster za dati frame
 
-           [~,label_kmean_S] = pdist2(codebooKS',[a1, b1, c1],'euclidean','Smallest',1);
-           [~,label_kmean_T] = pdist2(codebooKT',[a2, b2, c2],'euclidean','Smallest',1);
+           %[~,label_kmean_S] = pdist2(codebooKS',[a1, b1, c1],'euclidean','Smallest',1);
+           %[~,label_kmean_T] = pdist2(codebooKT',[a2, b2, c2],'euclidean','Smallest',1);
             
-            lS = cat(2, lS, label_kmean_S);
-            lT = cat(2, lT, label_kmean_T);
+           %lS = cat(2, lS, label_kmean_S);
+           %lT = cat(2, lT, label_kmean_T);
     end
-        Z=zeros(dim1,dim2,dim3); 
-        histograms = cell(2, 1);
-        histograms{1} = histcounts(lS, K);
-        histograms{2} = histcounts(lT, K);
-        D_S = horzcat(histograms{1});
-        D_T = horzcat(histograms{2});
+        %Z=zeros(dim1,dim2,dim3); 
+        %histograms = cell(2, 1);
+        %histograms{1} = histcounts(lS, K);
+        %histograms{2} = histcounts(lT, K);
+        %D_S = horzcat(histograms{1});
+        %D_T = horzcat(histograms{2});
 
 
-    D=vertcat(D,D_S);
-    T=vertcat(T,D_T);
+    %D=vertcat(D,D_S);
+    %T=vertcat(T,D_T);
 
     
 

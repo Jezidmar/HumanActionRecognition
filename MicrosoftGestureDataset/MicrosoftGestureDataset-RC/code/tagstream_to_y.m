@@ -34,8 +34,7 @@ for gi=1:S
 	for mi=1:numel(matching_tags)
 		% Find closest sequence frame
 		[frame_diff,frame_id]=min(abs(...
-			X(:,1)-matching_tags(mi).timestamp_usec));
-% 			int32(X(:,1))-int32(matching_tags(mi).timestamp_usec)));
+			int64(X(:,1))-int64(matching_tags(mi).timestamp_usec)));
 		assert(numel(frame_id)==1);
 		%disp(['Gesture "', gestures{gi}, '", frame ', num2str(frame_id)]);
         assert(numel(gi)==1);

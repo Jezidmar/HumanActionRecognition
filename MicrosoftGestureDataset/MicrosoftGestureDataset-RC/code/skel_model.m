@@ -47,11 +47,6 @@ KNEE_RIGHT = 17;
 ANKLE_RIGHT = 18;
 FOOT_RIGHT = 19;
 
-% A very special joint position, the constant position [0,0,0] (center of the
-% camera).  This allows us to distinguish angles relative to the camera
-% direction.
-ZERO_POINT = -1;
-
 nui_skeleton_names = { ...
 	'HIP_CENTER', 'SPINE', 'SHOULDER_CENTER', 'HEAD', ...
 	'SHOULDER_LEFT', 'ELBOW_LEFT', 'WRIST_LEFT', 'HAND_LEFT', ...

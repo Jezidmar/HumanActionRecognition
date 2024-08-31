@@ -1,4 +1,4 @@
-function [X,Y,tags]=load_file(file_basename, discard_zero_frames);
+function [X,Y,tagset]=load_file(file_basename,discard_zero_frames);
 %LOAD_FILE -- Load gesture recognition sequence
 %
 % Input
@@ -40,3 +40,4 @@ X(RI,:)=[];
 Y(RI,:)=[];
 %disp(['Removed ', num2str(numel(RI)), ...
 %	' frames from beginning of sequence "', file_basename, '".']);
+
