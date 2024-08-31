@@ -33,7 +33,7 @@ for k=1:593
         originalSample=start_frame:end_frame;
         
         
-        X(originalSample,:)=normalizeSequenceZscore(X(originalSample,:));
+        %X(originalSample,:)=normalizeSequenceZscore(X(originalSample,:));
 
 
 

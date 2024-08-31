@@ -1,7 +1,6 @@
 function X_resampled = resample_frames(X, target_frames)
     % X: Input matrix (N x M), where N is the number of frames
     % target_frames: The target number of frames (e.g., 64)
-    NUI_SKELETON_POSITION_COUNT = 20;
     [num_frames, num_features] = size(X);
     
     if num_frames == target_frames

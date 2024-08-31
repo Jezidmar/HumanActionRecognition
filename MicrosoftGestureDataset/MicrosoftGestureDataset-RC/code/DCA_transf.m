@@ -5,12 +5,6 @@ X_train_T = X_T(trainIdx, :);
 X_train_T = zscore(X_train_T);
 [p,n] = size(X_train_S);
 
-%X_train_S = X_train_S - mean(X_train_S, 2);
-%X_train_S = X_train_S ./ std(X_train_S, 0, 2);
-
-%X_train_T = X_train_T - mean(X_train_T, 2);
-%X_train_T = X_train_T ./ std(X_train_T, 0, 2);
-
 [Ax,Ay,Spatial,Temporal]=dcaFuse(X_train_S',X_train_T',Y_train' );
 
 
@@ -20,18 +14,13 @@ X_test_S = X_S(testIdx, :);
 X_test_S = zscore(X_test_S);
 X_test_T = X_T(testIdx, :);
 X_test_T = zscore(X_test_T);
-%X_test_S = X_test_S - mean(X_test_S, 2);
-%X_test_S = X_test_S ./ std(X_test_S, 0, 2);
-
-%X_test_T = X_test_T - mean(X_test_T, 2);
-%X_test_T = X_test_T ./ std(X_test_T, 0, 2);
 [p1,n1] = size(X_test_S);
 X_test_S = Ax * X_test_S';
 X_test_T = Ay * X_test_T';
 % 
 
-X_train = [Spatial ];
-X_test  = [X_test_S ];
+X_train = [Spatial; Temporal ];
+X_test  = [X_test_S; X_test_T ];
 
 
 ModelRF = TreeBagger(1000,X_train', Y_train,'OOBPred','On');

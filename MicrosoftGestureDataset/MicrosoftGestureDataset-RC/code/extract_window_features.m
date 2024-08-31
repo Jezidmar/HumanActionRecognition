@@ -1,8 +1,6 @@
 [idx1,idx2,C_S_window,C_T_window]=coding_window(Codebook_1_frames_window,Codebook_2_frames_window,K);
 df=dir('../data/*.csv');
-% maybe it is the best to create function which would take 1 file with
-% multiple action sequences and work with it. Or maybe it would be better
-% to go over all action sequences.
+
 X_S_window=[];
 X_T_window=[];
 

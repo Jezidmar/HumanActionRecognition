@@ -1,4 +1,4 @@
-%df=dir('../data/*.csv');
+df=dir('../data/*.csv');
 Acc=zeros(1,30);
 Splits=cell(1, 30);
 for i=1:30

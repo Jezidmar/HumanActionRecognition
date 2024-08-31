@@ -7,7 +7,7 @@ trainIdx = training(c);  % Logical array, true for training set
 testIdx = test(c);       % Logical array, true for test set
 
 % Split the data
-X_train = X_T_window(trainIdx, :);
+X_train = X_T_window(trainIdx, :); % Modify to X_S_window if you want results for spatial descriptor
 Y_train = Labels(trainIdx, :);
 
 X_test = X_T_window(testIdx, :);

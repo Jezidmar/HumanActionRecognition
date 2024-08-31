@@ -1,4 +1,6 @@
 function sample = normalizeSequenceZscore(sample)
+% What about normalizing coordinates from entire sequence?
+
 NUI_SKELETON_POSITION_COUNT=20;
 [num_frames,~]=size(sample);
 

@@ -1,3 +1,5 @@
+
+% config for Neural net
 net = feedforwardnet([10 ]);
 net.layers{2}.transferFcn='softmax';
 net.trainParam.lr = 0.001;
@@ -7,21 +9,18 @@ net.performFcn = 'crossentropy';
 net.trainParam.goal = 1e-6;
 net.outputs{end}.processFcns={};
 net.layers{1}.transferFcn = 'logsig';
+%
 num_classes = 12;  % Assuming Y_train contains classes 1, 2, 3, etc.
 classes = 1:num_classes;
-% for TRAINING PURPOSES SET BOTH X and Y to shape
-% (num_feats/num_classes,num_samples)
 % One-hot encoding of the labels
 Y_train_one_hot = onehotencode(Y_train, 2, "ClassNames", classes);  % Encode along the 2nd dimension
 Y_test_one_hot = onehotencode(Y_test, 2, "ClassNames", classes);    % Encode along the 2nd dimension
 % Ensure the input data is transposed (features as columns)
 % Configure the network for training
 Y_train_one_hot=Y_train_one_hot';
-%X_train = X_train 
 X_train=X_train';
 X_test=X_test';
-size(X_train)
-size(Y_train_one_hot)
+
 net = configure(net, X_train, Y_train_one_hot);
 
 % Train the network
