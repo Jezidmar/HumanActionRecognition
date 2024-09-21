@@ -1,0 +1,9 @@
+teafunction [idx1,idx2,C1,C2]=coding(sigma_A,sigma_D,f)
+
+
+%[idx1, C1] = kmedoids(sigma_A, f, 'Replicates', 10);
+[idx1, C1] = kmeans(sigma_A, f,'Start', 'plus',MaxIter=5000);
+%[idx2, C2] = kmedoids(sigma_D, f, 'Replicates', 10);
+[idx2, C2] = kmeans(sigma_D, f,MaxIter=5000);
+end
+%

@@ -1,0 +1,68 @@
+function [instruction_type, gesture_number, subject_number] = determine_modality(filename)
+    % Parse the filename
+    parts = strsplit(filename, '_');
+    
+    % Extract the instruction code
+    instruction_code = [parts{1}(2), '_', parts{2}(1)];
+    
+    % Check if it's a double instruction
+    is_double_instruction = contains(parts{3}, 'A');
+    
+    % Extract gesture number
+    if is_double_instruction==true
+        gesture_number = parts{3}(1:end-1);
+    else
+        gesture_number = parts{3};
+    end
+
+    
+    % Extract subject number
+    subject_number = parts{4}(2:end);
+    
+    % Define the instruction mapping
+    gesture_modality_map = containers.Map(...
+        {'1_P1_1','1_P1_2', '1_P2_1','1_P2_2', '1_P3_1','1_P3_2', '1_P1_1A','1_P3_1A', '1_P2_1A', '1_P3_2A', ... % G1
+         '2_P3_1', '2_P3_2', '2_P1_1', '2_P1_2', '2_P2_1', '2_P2_2', '2_P3_1A', '2_P2_1A','2_P1_1A', '2_P2_2A', ... % G2
+         '3_P2_1', '3_P2_2', '3_P3_1', '3_P3_2', '3_P1_1', '3_P1_2', '3_P2_1A', '3_P1_1A','3_P3_1A', '3_P1_2A', ... % G3
+         '4_P1_1', '4_P1_2', '4_P2_1', '4_P2_2', '4_P3_1', '4_P3_2', '4_P1_2A', '4_P3_2A','4_P2_2A', '4_P3_1A', ... % G4
+         '5_P3_1', '5_P3_2', '5_P1_1', '5_P1_2', '5_P2_1', '5_P2_2', '5_P3_2A', '5_P2_2A','5_P1_2A', '5_P2_1A', ... % G5
+         '6_P2_1', '6_P2_2', '6_P3_1', '6_P3_2', '6_P1_1', '6_P1_2', '6_P2_2A', '6_P1_2A','6_P3_2A', '6_P1_1A', ... % G6
+         '7_P1_1', '7_P1_2', '7_P2_1', '7_P2_2', '7_P3_1', '7_P3_2', '7_P1_1A', '7_P3_1A','7_P2_1A', '7_P3_2A', ... % G7
+         '8_P3_1', '8_P3_2', '8_P1_1', '8_P1_2', '8_P2_1', '8_P2_2', '8_P3_1A', '8_P2_1A','8_P1_1A', '8_P2_2A', ... % G8
+         '9_P2_1', '9_P2_2', '9_P3_1', '9_P3_2', '9_P1_1', '9_P1_2', '9_P2_1A', '9_P1_1A','9_P3_1A', '9_P1_2A', ... % G9
+         '10_P1_1', '10_P1_2', '10_P2_1', '10_P2_2', '10_P3_1', '10_P3_2', '10_P1_2A', '10_P3_2A','10_P2_2A', '10_P3_1A', ... % G10
+         '11_P3_1', '11_P3_2', '11_P1_1', '11_P1_2', '11_P2_1', '11_P2_2', '11_P3_2A', '11_P2_2A','11_P1_2A', '11_P2_1A', ... % G11
+         '12_P2_1', '12_P2_2', '12_P3_1', '12_P3_2', '12_P1_1', '12_P1_2', '12_P2_2A', '12_P1_2A','12_P3_2A', '12_P1_1A'}, ... % G12
+        {'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5', ...
+         'C1','C1', 'C2','C2', 'C3', 'C3', 'C4', 'C4', 'C5', 'C5'});
+    % Get the instruction type
+    lookup_key = [gesture_number,'_P', instruction_code];
+    if is_double_instruction==true
+        lookup_key = [lookup_key, 'A'];
+    end
+    instruction_type = gesture_modality_map(lookup_key);
+    gesture_number = str2double(gesture_number);
+
+end
+
+% Example usage:
+%[instruction, gesture,  subject] = parse_filename('P1_2_10A_p06.csv');
+% disp([instruction, ', Gesture: ', num2str(gesture), ', Double: ', num2str(is_double), ', Subject: ', num2str(subject)]);
+
+
+
+
+
+
+
+

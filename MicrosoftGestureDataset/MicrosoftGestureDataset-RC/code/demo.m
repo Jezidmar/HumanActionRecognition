@@ -3,12 +3,12 @@
 %
 % Author: Sebastian Nowozin <Sebastian.Nowozin@microsoft.com>
 
-fileName = 'P1_1_1_p06'; %'P3_2_8_p29'
+fileName = 'P3_2_10A_p02'; %'P3_2_8_p29'
 disp(['Visualizing sequence ' fileName]);
 
-[X,Y,tagset]=load_file(strtok(df(indices(290)).name,'.'));
+[X,Y,tagset]=load_file(fileName,'.');
 T=size(X,1);	% Length of sequence in frames
-find(sum(Y,2))
+find(sum(Y,2));
 % Animate sequence
 
 fp = fopen(['../data/' fileName '.sep'], 'rt');

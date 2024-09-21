@@ -25,13 +25,8 @@ X_test  = [X_test_S; X_test_T ];
 
 ModelRF = TreeBagger(1000,X_train', Y_train,'OOBPred','On');
 pred = predict(ModelRF,X_test');
-confM = confusionmat(Y_test, str2double(pred) );
-num_classes = 12;
-total_incorrect=0;
-total_correct=0;
-for i = 1:num_classes
-    total_incorrect=total_incorrect+sum(confM(i,:))-confM(i,i);
-    total_correct=total_correct+confM(i,i);
-end
 
-Acc_dca=total_correct/(total_incorrect+total_correct)
+
+C = confusionmat(Y_test, str2double(pred) );
+
+accuracy = trace(C) / sum(C(:))

@@ -4,7 +4,6 @@ function binaryList = splitMSRC12Dataset(df,testSubjectID)
 
     % Extract subject IDs from file names
     subjectIDs = cellfun(@getSubjectID, {allData.name});
-
     % Initialize binary list
     binaryList = zeros(size(subjectIDs));
 
@@ -22,9 +21,13 @@ function binaryList = splitMSRC12Dataset(df,testSubjectID)
         S = fscanf(fp, '%d', [2 Inf])';
         fclose(fp);
         num_repeats(k)=size(S,1);
+        tf = strcmp( file_name , allData(k).name );
+        if tf==0
+            disp("Error")
+        end
     end
     binaryList = repelem(binaryList, num_repeats);
-
+    disp(sum(binaryList) )
 
 end
 function subjectID = getSubjectID(filename)

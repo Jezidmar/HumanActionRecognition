@@ -1,4 +1,4 @@
-function [D_S,D_T] = extract_one_sample(sample,C_S,C_T,dim1,dim2,dim3,number_of_sv,K,num_frames)
+function [D_S,D_T] = extract_one_sample(sample,C_S,C_T,dim1,dim2,dim3,number_of_sv,K,num_frames,Referent_Skeleton)
 lS=[];
 lT=[];
 NUI_SKELETON_POSITION_COUNT = 20;
@@ -8,18 +8,19 @@ for i=1:num_frames
     skel=reshape(sample(i,:), 4, NUI_SKELETON_POSITION_COUNT);
     Y=skel(1:3,:);
     K_A = mod3d2(Y,dim1,dim2,dim3);
+    %K_A = mod3d2_v2(Y,dim1,dim2,dim3,Referent_Skeleton);
     K_B= mod3dTemp(Z,K_A);
     Z=K_B;
     % for each representation
     [K1,K2,K3]=unfold(K_A);
     [D1,D2,D3]=unfold(K_B);
-    U1_A=rsvd(K1,dim1); 
-    U2_A=rsvd(K2,dim2);
-    U3_A=rsvd(K3,dim3);
+    U1_A=rsvd(K1,dim1,10); 
+    U2_A=rsvd(K2,dim2,10);
+    U3_A=rsvd(K3,dim3,10);
     %
-    U1_B=rsvd(D1,dim1);
-    U2_B=rsvd(D2,dim2);
-    U3_B=rsvd(D3,dim3);
+    U1_B=rsvd(D1,dim1,10);
+    U2_B=rsvd(D2,dim2,10);
+    U3_B=rsvd(D3,dim3,10);
     %
     S_A = nmodeproduct(nmodeproduct(nmodeproduct(K_A, U1_A', 1),U2_A',2),U3_A',3);
     S_D = nmodeproduct(nmodeproduct(nmodeproduct(K_B, U1_B', 1),U2_B',2),U3_B',3);
@@ -49,8 +50,8 @@ for i=1:num_frames
     % attempt normalize each vector separately.
     %point_S = [zscore(a1), zscore(b1), zscore(c1)];
     %point_T = [zscore(a2), zscore(b2), zscore(c2)];
-    point_S = [a1,b1,c1];
-    point_T = [a2,b2,c2];
+    point_S = [a1,b1,c1]/norm([a1, b1, c1]);
+    point_T = [a2,b2,c2]/norm([a2, b2, c2]);
     [~,label_kmean_S] = pdist2(C_S,point_S,'euclidean','Smallest',1);
     [~,label_kmean_T] = pdist2(C_T,point_T,'euclidean','Smallest',1);
     lS = cat(2, lS, label_kmean_S);
@@ -59,8 +60,8 @@ for i=1:num_frames
 end
 
 histograms = cell(2, 1);
-histograms{1} = histcounts(lS, K);
-histograms{2} = histcounts(lT, K);
+histograms{1} = accumarray(lS', 1, [K, 1])';
+histograms{2} = accumarray(lT', 1, [K, 1])';
 D_S = horzcat(histograms{1});
 D_T = horzcat(histograms{2});
 end

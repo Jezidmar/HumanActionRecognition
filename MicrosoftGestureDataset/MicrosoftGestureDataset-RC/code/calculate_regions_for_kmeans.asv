@@ -1,0 +1,34 @@
+% Maybe it would be better to include the entire prediction loop for single
+% sample
+df=dir('../data/*.csv');
+total_number_of_frames=0;
+Splits_kmeans_subjects=cell(1, 30);
+for k=1:593
+    % go over all action sequences
+    [X,L,tags]=load_file(strtok(df(k).name,'.')); 
+    file_name=strtok(df(k).name,'.');
+    fp = fopen(['../data/' file_name '.sep'], 'rt');
+    if fp==-1
+        disp('Sample:');
+        disp(file_name)
+        continue
+    end
+    S = fscanf(fp, '%d', [2 Inf])';
+    fclose(fp);
+    disp('Sample:');
+    disp(k);
+    subject_id = getSubjectID(file_name);
+    current_number_of_frames = total_number_of_frames;
+    total_number_of_frames_in_all_sequences = 0;
+    Split{subject_id} = cat(Split{subject_id},)
+    for s=1:size(S,1) % go over all action sequences
+        start_frame=S(s,1);
+        end_frame=S(s,2);
+        originalSample=start_frame:end_frame;
+        %compute spine length for each frame separately
+        %Splits
+        total_number_of_frames_in_all_sequences = total_number_of_frames_in_all_sequences + end_frame-start_frame;
+        
+    end
+    Split{subject_id} = cat(Split{subject_id},curre)
+end
