@@ -31,13 +31,13 @@ Based on the "leave persons out procedure", I obtained the following results:
 
 These results were obtained using the following hyperparameters:
 
-- (x,y,h) = (13,13,15)
-- number_of_singular_values = 13
+- (x,y,h) = (13,13,13)
+- number_of_singular_values = 10
 
 ### Codebook Construction
 
-- K = 32 codes in the codebook
-- L1 distance used for construction of codebooks `cityblock`
+- K = 64 codes in the codebook
+- Euclidean distance used for constructing codebook `Euclidean`
 - There is generally high variance, i.e., local optima are of relatively similar quality
 
 ### Preprocessing of Skeleton
@@ -46,11 +46,11 @@ These results were obtained using the following hyperparameters:
 - Scaling based on spine length
 - Rotation in the direction of the z-axis, i.e., vector [0 0 1]
 - Finally, scaling coordinates to fit in a binary tensor of third order
-- 1000 Trees in the Random Forests classifier
+- 10 Hidden dimension Feed Forward network
 
 Unfortunately, the authors did not provide the methodology on the construction of both the Codebook and descriptors, thus many details are left in the air. I assumed the separate frames represent centers in the codebook, but in some literature, they point out that multiple frames concatenated can be used as well. I implemented a pipeline for extraction of features based on windows; the scripts are named `{regular_name}_window` and the additional hyperparameters are `hop_length` and `window_size`, which have standard meaning.
 
-There is a possibility that the authors used only a fragment of the original set, i.e., ~1600 samples since they referred to the paper where only Video instructed sequences were used.
+
 
 Feel free to suggest improvements via the issues section.
 
